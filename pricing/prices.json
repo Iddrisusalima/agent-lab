@@ -1,0 +1,41 @@
+{
+  "_comment": "Prices in USD per 1,000,000 tokens. Verify against the provider pricing page before committing. Keys beginning with an underscore are comments and are ignored by the loader.",
+  "_schema": "models.<model-id> = { input_per_mtok, output_per_mtok, sourced_on }. sourced_on is the ISO 8601 date (YYYY-MM-DD) on which the two prices were read from the provider's pricing page.",
+  "_sources": [
+    "https://developers.openai.com/api/docs/pricing - OpenAI's current API pricing page, also served at https://platform.openai.com/docs/pricing. Read 2026-10-31; the GPT-6 / GPT-6.1 rows below were copied from the text-token table on that page.",
+    "https://models.litellm.ai/models/gpt-4o-mini and https://models.litellm.ai/models/gpt-4o - read 2026-10-31. The gpt-4o and gpt-4o-mini rates are no longer rendered in the fetchable part of OpenAI's pricing page (they sit behind the page's client-side 'older models' selector), so they were taken from LiteLLM's published model price file, which cites developers.openai.com/api/docs/pricing as its source and reported both models as checked on 2026-10-31."
+  ],
+  "_how_to_update": "Open the pricing page, copy the input and output price per 1M tokens for each model id below, and set sourced_on to the date you read the page. Do not edit these numbers from memory: a stale table silently corrupts every cost figure in the run summary and the eval report.",
+  "models": {
+    "gpt-4o-mini": {
+      "input_per_mtok": 0.15,
+      "output_per_mtok": 0.6,
+      "sourced_on": "2026-10-31"
+    },
+    "gpt-4o": {
+      "input_per_mtok": 2.5,
+      "output_per_mtok": 10.0,
+      "sourced_on": "2026-10-31"
+    },
+    "gpt-6-luna": {
+      "input_per_mtok": 0.1,
+      "output_per_mtok": 0.5,
+      "sourced_on": "2026-10-31"
+    },
+    "gpt-6.1-terra": {
+      "input_per_mtok": 1.0,
+      "output_per_mtok": 5.0,
+      "sourced_on": "2026-10-31"
+    },
+    "gpt-6.1-sol": {
+      "input_per_mtok": 2.0,
+      "output_per_mtok": 10.0,
+      "sourced_on": "2026-10-31"
+    },
+    "gpt-6-astra": {
+      "input_per_mtok": 10.0,
+      "output_per_mtok": 50.0,
+      "sourced_on": "2026-10-31"
+    }
+  }
+}
