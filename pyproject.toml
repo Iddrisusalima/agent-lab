@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-lab"
+version = "0.1.0"
+description = "A command-line research agent that answers multi-step questions about your own notes and documents."
+readme = "README.md"
+# Req 1.3: minimum supported Python version.
+requires-python = ">=3.10"
+keywords = ["agent", "llm", "tool-calling", "retrieval", "cli"]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+
+# Req 1.2: every runtime dependency is declared here, in the single manifest at
+# the repository root. Nothing is listed that the requirements do not name.
+dependencies = [
+    "openai>=1.40",   # the one shipped LLM provider SDK (Req 2.8)
+    "chromadb>=0.5",  # persistent vector store for the retrieval index (Req 7.3)
+    "pypdf>=4.2",     # PDF text extraction for the document corpus (Req 7.1)
+]
+
+[project.optional-dependencies]
+# Req 1.2: test dependencies, declared in the same manifest.
+dev = [
+    "pytest>=8.0",
+    "hypothesis>=6.100",  # property-based tests (Req 16.10)
+    "rich>=13.7",         # so the rich renderer path is exercised by the tests
+]
+# Optional pretty terminal output; the plain renderer is used when absent (Req 13).
+rich = ["rich>=13.7"]
+
+[project.scripts]
+agentlab = "agent_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

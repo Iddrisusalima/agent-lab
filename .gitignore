@@ -1,0 +1,31 @@
+# Secrets (Req 1.4) -- only .env.example is committed
+.env
+
+# Agent run artifacts (Req 1.4). Anchored to the repository root with a leading
+# slash: an unanchored `traces/` matches a directory of that name at any depth,
+# which silently excluded `evals/traces/` -- the 13 committed trace files that
+# `evals/results.md` and `docs/injection_run.md` cite as evidence. The
+# operator's own run artifacts stay ignored; the eval evidence is tracked.
+/notes.md
+/traces/
+/run.jsonl
+
+# Chroma persistence directory (Req 1.4)
+/.chroma/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.hypothesis/
+
+# Virtual environments
+.venv/
+venv/
+
+# Kiro's internal spec bookkeeping (the spec documents themselves are committed)
+.config.kiro
+tasks.meta.json
