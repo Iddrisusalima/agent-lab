@@ -1,0 +1,102 @@
+PROJECT HARBOR - GLOSSARY
+=========================
+
+Every term below is used with this meaning across the Project Harbor sample
+files. Where a figure belongs to a term, the file that holds the figure is
+named rather than repeated, so that no number appears twice in the corpus with
+two different values.
+
+ACTIVE STATION
+    A station that is installed, commissioned and reporting. Retired units are
+    never counted as active. The per-region counts and the network total are in
+    deployment_log.txt.
+
+ARCHIVE
+    The compressed weekly publication: one file per region plus one
+    network-wide file, each with a checksum. Built on a fixed weekly schedule
+    and published only after the data editor approves it. See
+    data_pipeline.md.
+
+AUTONOMY TARGET
+    The number of days a station must keep reporting with no sun. Used to judge
+    whether a shaded site is viable. The figure is in station_hardware.md.
+
+CALIBRATION CHECK
+    A comparison of a station sensor against the programme's reference
+    instrument, signed off by the calibration lead. Intervals differ per
+    measurement and are listed in maintenance_runbook.md.
+
+DRIFT
+    A slow change in a sensor's error over time, distinct from a fault. Drift
+    is corrected by calibration; a fault is corrected by replacement.
+
+FAULT CODE
+    A short code of the form E-nn recorded against a station visit or an alert.
+    The full table is in maintenance_runbook.md.
+
+FLAGGED READING
+    A reading that failed a validation rule but is published anyway with its
+    quality flag set. Distinct from a rejected reading, which is not published
+    at all.
+
+GATEWAY
+    A shed-mounted radio receiver that collects frames from nearby stations and
+    forwards them over a household internet connection. One gateway can serve
+    several stations.
+
+HOST
+    A volunteer whose property carries a station. A host maintains nothing and
+    pays nothing.
+
+LOGGER
+    The micro-controller board inside a station that samples the sensors,
+    buffers readings and drives the radio.
+
+POLL
+    One request from the ingestion service to one gateway. The polling interval
+    and the resulting readings per station per day are in data_pipeline.md.
+
+QUALITY FLAG
+    One of the twelve stored measurement fields, set when a validation rule
+    flags a reading.
+
+RAW TABLE
+    The short-lived table that holds readings as ingested, before validation.
+    Pruned far sooner than the readings table; both windows are in
+    data_pipeline.md.
+
+READING
+    One averaged measurement set from one station at one timestamp, carrying
+    twelve fields.
+
+REGION
+    One of the four named areas the network covers. A station identifier maps
+    to a region and to nothing finer.
+
+REJECTED READING
+    A reading discarded by validation and written to the reject log with the
+    rule that rejected it. The reject count is published with the archive.
+
+RETENTION WINDOW
+    How long a validated reading is kept before expiry. Expiry deletes whole
+    days only. The figure is in data_pipeline.md.
+
+STEERING GROUP
+    The three volunteers who approve spending above the threshold in
+    budget_2026.md and who decide anything a steward cannot decide alone.
+
+STEWARD
+    The on-call volunteer for one region for one week, responsible for
+    recognising an alert and taking the first action in the runbook.
+
+SWEEP
+    A visit to every station in one region, combining the ninety-day
+    maintenance items.
+
+UPGRADE KIT
+    The second-generation sensor board that replaces the first-generation
+    board. Described in station_hardware.md; priced in budget_2026.md.
+
+VALIDATION
+    The hourly pass that deduplicates, range-checks, rate-checks and clock-
+    checks ingested readings. Six rules, listed in data_pipeline.md.

@@ -1,0 +1,64 @@
+PROJECT HARBOR - DEPLOYMENT LOG (invented sample data)
+======================================================
+
+This log records station installations, moves and retirements by region. It is
+the only file that holds the per-region station counts.
+
+CURRENT STATION COUNT BY REGION
+-------------------------------
+Northern Lakes      14 active stations
+River Delta         23 active stations
+Cascade Foothills   17 active stations
+Harbor Flats         8 active stations
+                    --
+TOTAL               62 active stations
+
+The total agrees with the network size stated in harbor_overview.md. Retired
+units are excluded from every count above.
+
+REGION NOTES
+------------
+Northern Lakes    Oldest region. All 14 stations sit above 300 m and see the
+                  worst autumn condensation, so this region is first in line
+                  for the sensor-board upgrade kit.
+River Delta       Largest region, 23 stations, mostly flat farmland. Radio
+                  coverage is good; three stations share one gateway.
+Cascade Foothills 17 stations spread over the longest driving distances in the
+                  network. A full maintenance sweep here takes two days.
+Harbor Flats      Newest region, 8 stations, commissioned during 2025.
+
+INSTALLATION HISTORY BY YEAR
+----------------------------
+2023   19 stations installed (Northern Lakes and River Delta only)
+2024   21 stations installed
+2025   24 stations installed, including all 8 Harbor Flats stations
+2026    4 stations installed so far, all replacements rather than additions
+
+RETIREMENTS
+-----------
+2024-06   1 station retired, Northern Lakes, mast corrosion
+2025-02   2 stations retired, River Delta, host moved away
+2025-11   1 station retired, Cascade Foothills, permanent shading after
+          neighbouring tree growth
+
+SELECTED ENTRIES
+----------------
+2025-03-14  River Delta       New station commissioned. Gateway range check
+                              passed at 2.1 km.
+2025-04-02  Cascade Foothills Station moved 600 m to clear a new building.
+2025-06-21  Northern Lakes    Anemometer replaced after a stalled cup was
+                              found during the quarterly sweep.
+2025-08-09  Harbor Flats      Final station of the region commissioned,
+                              bringing Harbor Flats to 8.
+2025-10-30  River Delta       Gateway internet connection replaced; 31 hours
+                              of readings recovered from station buffers.
+2026-01-18  Cascade Foothills Battery box replaced after frost damage.
+2026-02-05  Northern Lakes    Condensation error logged at four stations over
+                              one week, raised with the calibration lead.
+2026-03-22  River Delta       Two loggers reflashed after a buffer overrun.
+
+PENDING WORK
+------------
+- Site survey for a possible fifth region; no stations installed yet.
+- Upgrade-kit rollout for Northern Lakes, awaiting a funding decision. The
+  per-kit price is in budget_2026.md, not here.
