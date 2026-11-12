@@ -85,8 +85,15 @@
         <mxCell id="p1-e11" value="text and no tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-reply" target="p1-answer">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="p1-e12" value="no text, or more than 8 tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="p1-reply" target="p1-failed">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="p1-e12" value="no text, or more than 8 tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0;entryX=1;entryY=0.5;" edge="1" parent="1" source="p1-reply" target="p1-failed">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="840" />
+              <mxPoint x="700" y="800" />
+              <mxPoint x="1110" y="800" />
+              <mxPoint x="1110" y="635" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="p1-e13" value="1 to 8 tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-reply" target="p1-dispatch">
           <mxGeometry relative="1" as="geometry" />
@@ -116,95 +123,95 @@
         <mxCell id="1" parent="0" />
 
         <mxCell id="p2-cfg" value="config.py: frozen Config, one DEFAULTS table, range validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="560" y="40" width="320" height="90" as="geometry" />
+          <mxGeometry x="30" y="40" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="p2-operator" value="operator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1010" y="50" width="200" height="70" as="geometry" />
+          <mxGeometry x="420" y="50" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-prompt" value="prompts.py: loads prompts/system_prompt.v1.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1460" y="40" width="320" height="90" as="geometry" />
+          <mxGeometry x="690" y="40" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="p2-cli" value="cli.py: run, index, eval. The only module that imports an adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="950" y="190" width="320" height="90" as="geometry" />
+          <mxGeometry x="360" y="190" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="p2-loop" value="agent_loop.py: the step cycle, MAX_STEPS and COST_CAP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="950" y="320" width="320" height="90" as="geometry" />
+          <mxGeometry x="360" y="340" width="320" height="90" as="geometry" />
         </mxCell>
 
         <mxCell id="p2-seam" value="the protocol seam: declared contracts, never a concrete adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="120" y="460" width="1980" height="180" as="geometry" />
+          <mxGeometry x="30" y="490" width="900" height="300" as="geometry" />
         </mxCell>
         <mxCell id="p2-pmodel" value="ModelClient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="40" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="50" y="55" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-ptool" value="Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="380" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="300" y="55" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-psink" value="TraceSink" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="720" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="550" y="55" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-prend" value="Renderer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="1060" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="675" y="165" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-pretr" value="Retriever" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="1400" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="175" y="165" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-pgate" value="ConfirmationGate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
-          <mxGeometry x="1740" y="80" width="200" height="70" as="geometry" />
+          <mxGeometry x="425" y="165" width="200" height="70" as="geometry" />
         </mxCell>
 
         <mxCell id="p2-adapter" value="providers/openai_client.py: the one shipped adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="110" y="700" width="300" height="90" as="geometry" />
+          <mxGeometry x="80" y="860" width="200" height="110" as="geometry" />
         </mxCell>
         <mxCell id="p2-dispatcher" value="tools/dispatcher.py: validate against the schema, execute, scrub, truncate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="450" y="700" width="300" height="100" as="geometry" />
+          <mxGeometry x="330" y="860" width="200" height="130" as="geometry" />
         </mxCell>
         <mxCell id="p2-tracefile" value="trace.py: one redacted JSON line per step, into traces/run.jsonl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="790" y="700" width="300" height="100" as="geometry" />
+          <mxGeometry x="580" y="860" width="200" height="120" as="geometry" />
         </mxCell>
         <mxCell id="p2-term" value="render.py: narration, answer and summary, redacted at the write" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1130" y="700" width="300" height="100" as="geometry" />
+          <mxGeometry x="830" y="860" width="200" height="120" as="geometry" />
         </mxCell>
         <mxCell id="p2-select" value="does CHROMA_DIR hold a non-empty collection?" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1460" y="695" width="320" height="110" as="geometry" />
+          <mxGeometry x="30" y="1210" width="320" height="110" as="geometry" />
         </mxCell>
         <mxCell id="p2-gate" value="confirmation.py: InteractiveGate asks; AutoApproveGate exists only if --non-interactive was passed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1820" y="695" width="320" height="110" as="geometry" />
+          <mxGeometry x="400" y="1210" width="320" height="120" as="geometry" />
         </mxCell>
 
         <mxCell id="p2-endpoint" value="provider HTTP endpoint" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="110" y="880" width="300" height="80" as="geometry" />
+          <mxGeometry x="80" y="1070" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p2-calc" value="calculator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="380" y="880" width="200" height="70" as="geometry" />
+          <mxGeometry x="810" y="1070" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-search" value="search_docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="620" y="880" width="200" height="70" as="geometry" />
+          <mxGeometry x="330" y="1070" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-save" value="save_note" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="860" y="880" width="200" height="70" as="geometry" />
+          <mxGeometry x="570" y="1070" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-read" value="read_notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1100" y="880" width="200" height="70" as="geometry" />
+          <mxGeometry x="1050" y="1070" width="200" height="70" as="geometry" />
         </mxCell>
         <mxCell id="p2-web" value="web_search: optional, off by default" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1340" y="880" width="200" height="80" as="geometry" />
+          <mxGeometry x="1290" y="1070" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="p2-notes" value="the notes file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="2180" y="880" width="300" height="80" as="geometry" />
+          <mxGeometry x="1200" y="1380" width="300" height="80" as="geometry" />
         </mxCell>
 
         <mxCell id="p2-ground" value="grounding.wrap: enclose in the untrusted-data delimiters, replace any forged delimiter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="700" y="1020" width="400" height="100" as="geometry" />
+          <mxGeometry x="770" y="1210" width="400" height="100" as="geometry" />
         </mxCell>
         <mxCell id="p2-chroma" value="retrieval/chroma_index.py: ChromaRetriever" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1360" y="1020" width="320" height="90" as="geometry" />
+          <mxGeometry x="30" y="1390" width="320" height="90" as="geometry" />
         </mxCell>
         <mxCell id="p2-keyword" value="retrieval/keyword.py: KeywordRetriever, which says so in every result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1740" y="1020" width="340" height="90" as="geometry" />
+          <mxGeometry x="400" y="1390" width="340" height="90" as="geometry" />
         </mxCell>
         <mxCell id="p2-corpus" value="the corpus: retrieval/loader.py reads it, retrieval/chunking.py cuts it" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#000000;" vertex="1" parent="1">
-          <mxGeometry x="1520" y="1180" width="360" height="90" as="geometry" />
+          <mxGeometry x="150" y="1530" width="360" height="90" as="geometry" />
         </mxCell>
 
         <mxCell id="p2-e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-operator" target="p2-cli">
