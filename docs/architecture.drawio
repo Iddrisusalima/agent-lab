@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="21.6.5">
+  <diagram id="run-lifecycle" name="Run lifecycle">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="p1-task" value="agentlab run TASK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-valid" value="task is 1 to 4000 characters after trimming?" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="340" y="140" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-invalid" value="stop: invalid_task, exit 5. No model call, no trace line" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="155" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-stepbound" value="completed steps below MAX_STEPS, which is 8?" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="340" y="290" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-limit" value="stop: step_limit_reached, exit 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="305" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-costbound" value="spend so far below COST_CAP, which is 0.25 dollars?" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="340" y="440" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-capped" value="stop: cost_cap_reached, exit 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="455" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-call" value="model call: system prompt, conversation, registry schemas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="590" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-failed" value="stop: model_error, exit 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="595" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-spend" value="record this call's tokens and dollars" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="720" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-reply" value="what the reply contained" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="340" y="840" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-answer" value="stop: final_answer, exit 0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="760" y="855" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-dispatch" value="dispatch each call, in reply order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1000" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-observe" value="append each result to the conversation as an observation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1120" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-line" value="append exactly one trace line for this step" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1260" width="280" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p1-e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-task" target="p1-valid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e2" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-valid" target="p1-invalid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e3" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-valid" target="p1-stepbound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e4" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-stepbound" target="p1-limit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e5" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-stepbound" target="p1-costbound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e6" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-costbound" target="p1-capped">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e7" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-costbound" target="p1-call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e8" value="typed error, after the adapter's own retries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-call" target="p1-failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e9" value="reply" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-call" target="p1-spend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-spend" target="p1-reply">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e11" value="text and no tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-reply" target="p1-answer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e12" value="no text, or more than 8 tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=1;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="p1-reply" target="p1-failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e13" value="1 to 8 tool calls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-reply" target="p1-dispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-dispatch" target="p1-observe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p1-observe" target="p1-line">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1-e16" value="next step" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;exitX=0;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="p1-line" target="p1-stepbound">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="1300" />
+              <mxPoint x="200" y="345" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="module-structure" name="Module structure">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="p2-cfg" value="config.py: frozen Config, one DEFAULTS table, range validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-operator" value="operator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="50" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-prompt" value="prompts.py: loads prompts/system_prompt.v1.md" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="40" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-cli" value="cli.py: run, index, eval. The only module that imports an adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="950" y="190" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-loop" value="agent_loop.py: the step cycle, MAX_STEPS and COST_CAP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="950" y="320" width="320" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2-seam" value="the protocol seam: declared contracts, never a concrete adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;verticalAlign=top;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="460" width="1980" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-pmodel" value="ModelClient" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="40" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-ptool" value="Tool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="380" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-psink" value="TraceSink" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="720" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-prend" value="Renderer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="1060" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-pretr" value="Retriever" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="1400" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-pgate" value="ConfirmationGate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#000000;" vertex="1" parent="p2-seam">
+          <mxGeometry x="1740" y="80" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2-adapter" value="providers/openai_client.py: the one shipped adapter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="700" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-dispatcher" value="tools/dispatcher.py: validate against the schema, execute, scrub, truncate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="450" y="700" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-tracefile" value="trace.py: one redacted JSON line per step, into traces/run.jsonl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="790" y="700" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-term" value="render.py: narration, answer and summary, redacted at the write" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="700" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-select" value="does CHROMA_DIR hold a non-empty collection?" style="rounded=1;whiteSpace=wrap;html=1;shape=rhombus;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="695" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-gate" value="confirmation.py: InteractiveGate asks; AutoApproveGate exists only if --non-interactive was passed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="695" width="320" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2-endpoint" value="provider HTTP endpoint" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="110" y="880" width="300" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-calc" value="calculator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="380" y="880" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-search" value="search_docs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="620" y="880" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-save" value="save_note" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="880" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-read" value="read_notes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="880" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-web" value="web_search: optional, off by default" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="880" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-notes" value="the notes file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="2180" y="880" width="300" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2-ground" value="grounding.wrap: enclose in the untrusted-data delimiters, replace any forged delimiter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1020" width="400" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-chroma" value="retrieval/chroma_index.py: ChromaRetriever" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1020" width="320" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-keyword" value="retrieval/keyword.py: KeywordRetriever, which says so in every result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1740" y="1020" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-corpus" value="the corpus: retrieval/loader.py reads it, retrieval/chunking.py cuts it" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="1180" width="360" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2-e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-operator" target="p2-cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-cfg" target="p2-cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-prompt" target="p2-cli">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-cli" target="p2-loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-loop" target="p2-pmodel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-loop" target="p2-ptool">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-loop" target="p2-psink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-loop" target="p2-prend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-pmodel" target="p2-adapter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-adapter" target="p2-endpoint">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-psink" target="p2-tracefile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-prend" target="p2-term">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-ptool" target="p2-dispatcher">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-dispatcher" target="p2-calc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-dispatcher" target="p2-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-dispatcher" target="p2-save">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-dispatcher" target="p2-read">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-dispatcher" target="p2-web">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-save" target="p2-pgate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-pgate" target="p2-gate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e21" value="only the operator can answer y" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-gate" target="p2-notes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-read" target="p2-notes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e23" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-search" target="p2-pretr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-pretr" target="p2-select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e25" value="yes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-select" target="p2-chroma">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e26" value="no" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-select" target="p2-keyword">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e27" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-chroma" target="p2-corpus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-keyword" target="p2-corpus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-search" target="p2-ground">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-read" target="p2-ground">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2-e31" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;" edge="1" parent="1" source="p2-ground" target="p2-loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
