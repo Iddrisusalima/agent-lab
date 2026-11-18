@@ -3,10 +3,16 @@
   "_schema": "models.<model-id> = { input_per_mtok, output_per_mtok, sourced_on }. sourced_on is the ISO 8601 date (YYYY-MM-DD) on which the two prices were read from the provider's pricing page.",
   "_sources": [
     "https://developers.openai.com/api/docs/pricing - OpenAI's current API pricing page, also served at https://platform.openai.com/docs/pricing. Read 2026-10-31; the GPT-6 / GPT-6.1 rows below were copied from the text-token table on that page.",
-    "https://models.litellm.ai/models/gpt-4o-mini and https://models.litellm.ai/models/gpt-4o - read 2026-10-31. The gpt-4o and gpt-4o-mini rates are no longer rendered in the fetchable part of OpenAI's pricing page (they sit behind the page's client-side 'older models' selector), so they were taken from LiteLLM's published model price file, which cites developers.openai.com/api/docs/pricing as its source and reported both models as checked on 2026-10-31."
+    "https://models.litellm.ai/models/gpt-4o-mini and https://models.litellm.ai/models/gpt-4o - read 2026-10-31. The gpt-4o and gpt-4o-mini rates are no longer rendered in the fetchable part of OpenAI's pricing page (they sit behind the page's client-side 'older models' selector), so they were taken from LiteLLM's published model price file, which cites developers.openai.com/api/docs/pricing as its source and reported both models as checked on 2026-10-31.",
+    "openai/gpt-oss-120b - GroqCloud's published rates for that model, read from the Groq console pricing view while signed in on 2026-11-12. Groq's public pricing page renders its rate table with client-side JavaScript and could not be read programmatically, so the figures were confirmed against the signed-in console rather than fetched from that page. Several third-party pricing trackers independently reported the same $0.15 input / $0.60 output per 1M tokens in the same period, which corroborates the figures."
   ],
   "_how_to_update": "Open the pricing page, copy the input and output price per 1M tokens for each model id below, and set sourced_on to the date you read the page. Do not edit these numbers from memory: a stale table silently corrupts every cost figure in the run summary and the eval report.",
   "models": {
+    "openai/gpt-oss-120b": {
+      "input_per_mtok": 0.15,
+      "output_per_mtok": 0.6,
+      "sourced_on": "2026-11-12"
+    },
     "gpt-4o-mini": {
       "input_per_mtok": 0.15,
       "output_per_mtok": 0.6,
