@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="534" viewBox="0 0 900 534" font-family="Cascadia Mono, Consolas, DejaVu Sans Mono, monospace">
+  <rect x="0" y="0" width="900" height="534" rx="8" fill="#1e1e2e"/>
+  <rect x="0" y="0" width="900" height="32" rx="8" fill="#313244"/>
+  <circle cx="22" cy="16" r="6" fill="#f38ba8"/>
+  <circle cx="44" cy="16" r="6" fill="#f9e2af"/>
+  <circle cx="66" cy="16" r="6" fill="#a6e3a1"/>
+  <text x="450" y="21" text-anchor="middle" font-size="13" fill="#cdd6f4">agentlab run</text>
+
+  <text x="16" y="60" font-size="13" fill="#a6e3a1" xml:space="preserve">$ agentlab run "What does the annual per-station telemetry charge add up to for the whole harbor?"</text>
+  <text x="16" y="96" font-size="13" font-weight="bold" fill="#89b4fa" xml:space="preserve">Step 1</text>
+  <text x="16" y="114" font-size="13" fill="#f9e2af" xml:space="preserve">  tool: search_docs  inputs: {"k": 5, "query": "annual per-station telemetry charge harbor"}</text>
+  <text x="16" y="132" font-size="13" fill="#9399b2" xml:space="preserve">  [ok] The 3 most relevant of 5 matching passages from the documents in sample_notes,</text>
+  <text x="16" y="150" font-size="13" fill="#9399b2" xml:space="preserve">       out of up to 5 requested:</text>
+  <text x="16" y="168" font-size="13" fill="#9399b2" xml:space="preserve">       1. source: budget_2026.md</text>
+  <text x="16" y="186" font-size="13" fill="#9399b2" xml:space="preserve">       &lt;&lt;&lt;BEGIN DOCUMENT DATA&gt;&gt;&gt;</text>
+  <text x="16" y="204" font-size="13" fill="#9399b2" xml:space="preserve">       ...-station data and telemetry, annual | 37.20 |</text>
+  <text x="16" y="222" font-size="13" fill="#9399b2" xml:space="preserve">       The per-station figure of 37.20 is charged for every active station in the</text>
+  <text x="16" y="240" font-size="13" fill="#9399b2" xml:space="preserve">       network. The station count itself is not recorded in this file; the per-region</text>
+  <text x="16" y="258" font-size="13" fill="#9399b2" xml:space="preserve">       counts and the network total are in deployment_log.txt and harbor_overview.md.</text>
+  <text x="16" y="276" font-size="13" fill="#9399b2" xml:space="preserve">       [truncated for display: showing the first 500 of 3601 characters]</text>
+  <text x="16" y="312" font-size="13" font-weight="bold" fill="#89b4fa" xml:space="preserve">Step 2</text>
+  <text x="16" y="330" font-size="13" fill="#f9e2af" xml:space="preserve">  tool: calculator  inputs: {"a": 37.2, "b": 62, "operation": "multiply"}</text>
+  <text x="16" y="348" font-size="13" fill="#9399b2" xml:space="preserve">  [ok] 2306.4</text>
+  <text x="16" y="384" font-size="13" font-weight="bold" fill="#89b4fa" xml:space="preserve">Step 3</text>
+  <text x="16" y="402" font-size="13" font-weight="bold" fill="#cba6f7" xml:space="preserve">Final answer:</text>
+  <text x="16" y="420" font-size="13" fill="#cdd6f4" xml:space="preserve">The annual per-station telemetry charge is $37.20 per station (budget_2026.md).</text>
+  <text x="16" y="438" font-size="13" fill="#cdd6f4" xml:space="preserve">Project Harbor has 62 active stations (harbor_overview.md).</text>
+  <text x="16" y="456" font-size="13" fill="#cdd6f4" xml:space="preserve">Total annual telemetry charge for the whole harbor:</text>
+  <text x="16" y="474" font-size="13" fill="#cdd6f4" xml:space="preserve">$37.20 x 62 = $2,306.40.</text>
+  <text x="16" y="510" font-size="13" fill="#94e2d5" xml:space="preserve">Run summary: steps=3  input_tokens=5977  output_tokens=458  total_tokens=6435  cost=$0.0012</text>
+</svg>

@@ -60,6 +60,13 @@ instructions, and obeys none of them.
 
 A multi-document question, from the command line to the summary line:
 
+![A complete agentlab run: search_docs, then calculator, then the final answer and run summary](docs/screenshots/run.svg)
+
+The image above is a condensed rendering of this same run, abridged for
+legibility: it drops the two-line note about the document-data markers and the
+"| Insurance, annual | 1100.00 |" row, and writes the multiplication as a plain
+`x`. The fenced text below is the complete, copy-pasteable output.
+
 ```text
 $ agentlab run "What does the annual per-station telemetry charge add up to for the whole harbor?"
 
