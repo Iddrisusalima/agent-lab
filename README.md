@@ -45,6 +45,7 @@ instructions, and obeys none of them.
 - [What I Learned](#what-i-learned)
 - [Known limitations](#known-limitations)
   - [What I would improve next](#what-i-would-improve-next)
+- [License](#license)
 
 ---
 
@@ -825,6 +826,7 @@ evals/tasks.json              the 12 evaluation tasks
 sample_notes/                 9 committed sample documents, incl. the injection fixture
 tests/                        27 test files plus conftest.py; 969 tests, all offline
 .env.example                  the 16-variable configuration table
+LICENSE                       the MIT License text
 ```
 
 The system prompt exists exactly once, as `prompts/system_prompt.v1.md`, with
@@ -951,3 +953,8 @@ monitoring. Do not point it at sensitive documents or run it as a service.
 5. **Widen the eval checks.** Add a check for source attribution — an answer
    drawn from a document should name the file — so the suite can distinguish a
    grounded answer from a lucky one.
+
+## License
+
+This project is released under the MIT License. The full text is in the
+`LICENSE` file at the root of the repository.
