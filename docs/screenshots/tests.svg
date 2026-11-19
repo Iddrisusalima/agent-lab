@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="228" viewBox="0 0 900 228" font-family="Cascadia Mono, Consolas, DejaVu Sans Mono, monospace">
+  <rect x="0" y="0" width="900" height="228" rx="8" fill="#1e1e2e"/>
+  <rect x="0" y="0" width="900" height="32" rx="8" fill="#313244"/>
+  <circle cx="22" cy="16" r="6" fill="#f38ba8"/>
+  <circle cx="44" cy="16" r="6" fill="#f9e2af"/>
+  <circle cx="66" cy="16" r="6" fill="#a6e3a1"/>
+  <text x="450" y="21" text-anchor="middle" font-size="13" fill="#cdd6f4">pytest - the offline suite</text>
+
+  <text x="16" y="60" font-size="13" fill="#a6e3a1" xml:space="preserve">$ .\.venv\Scripts\python.exe -m pytest -q</text>
+  <text x="16" y="96" font-size="13" fill="#a6e3a1" xml:space="preserve">........................................................................ [ 74%]</text>
+  <text x="16" y="114" font-size="13" fill="#a6e3a1" xml:space="preserve">........................................................................ [ 81%]</text>
+  <text x="16" y="132" font-size="13" fill="#a6e3a1" xml:space="preserve">........................................................................ [ 89%]</text>
+  <text x="16" y="150" font-size="13" fill="#a6e3a1" xml:space="preserve">........................................................................ [ 96%]</text>
+  <text x="16" y="168" font-size="13" fill="#a6e3a1" xml:space="preserve">.................................                                        [100%]</text>
+  <text x="16" y="204" font-size="13" font-weight="bold" fill="#a6e3a1" xml:space="preserve">969 passed in 339.69s (0:05:39)</text>
+</svg>
