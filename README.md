@@ -133,6 +133,14 @@ protocol the OpenAI adapter does, and the loop cannot tell them apart.
 is a *step*. Both bounds are checked before the model call of the step, which is
 what makes them limits rather than suggestions:
 
+![The run lifecycle: task validation, the two bound checks above the model call, tool dispatch, and the five exits](docs/diagrams/architecture-lifecycle.png)
+
+The image is rendered from the Mermaid source below it, so the picture and the
+source cannot drift apart.
+
+<details>
+<summary>Mermaid source for this diagram</summary>
+
 ```mermaid
 flowchart TD
     Task["agentlab run TASK"] --> Valid{"task is 1 to 4000 characters after trimming?"}
@@ -165,6 +173,8 @@ flowchart TD
     classDef step fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000
 ```
 
+</details>
+
 Five exits, one per run, each with its own code: the four abnormal ones are
 distinguishable without parsing terminal text. Note where the two bound checks
 sit — above the model call, not below it — and that the trace line is appended
@@ -173,6 +183,11 @@ once per step on the way round, whatever happened inside the step.
 **The module structure.** The box in the middle is the seam. Those six names are
 protocols, and they are what the loop and the tools import; the implementations
 are below them, and nothing above the box reaches past it except `cli.py`:
+
+![The module structure: the CLI and agent loop above the protocol seam, with implementations, tools and retrieval below it](docs/diagrams/architecture-modules.png)
+
+<details>
+<summary>Mermaid source for this diagram</summary>
 
 ```mermaid
 flowchart TB
@@ -242,6 +257,8 @@ flowchart TB
     classDef external fill:#f5f5f5,stroke:#666666,stroke-width:1px,color:#000,stroke-dasharray: 4 3
     classDef step fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000
 ```
+
+</details>
 
 Two edges in that diagram carry most of the safety model. `save_note` reaches
 the notes file only through the gate, and the gate is a constructor argument, so
