@@ -151,6 +151,18 @@ flowchart TD
     Dispatch --> Observe["append each result to the conversation as an observation"]
     Observe --> Line["append exactly one trace line for this step"]
     Line --> StepBound
+
+    class Task entry
+    class Valid,StepBound,CostBound,Reply decision
+    class Invalid,Limit,Capped,Failed fail
+    class Answer success
+    class Call,Spend,Dispatch,Observe,Line step
+
+    classDef entry fill:#dae8fc,stroke:#6c8ebf,stroke-width:1px,color:#000
+    classDef decision fill:#fff2cc,stroke:#d6b656,stroke-width:1px,color:#000
+    classDef fail fill:#f8cecc,stroke:#b85450,stroke-width:1px,color:#000
+    classDef success fill:#d5e8d4,stroke:#82b366,stroke-width:1px,color:#000
+    classDef step fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000
 ```
 
 Five exits, one per run, each with its own code: the four abnormal ones are
@@ -211,6 +223,24 @@ flowchart TB
     Search --> Ground["grounding.wrap: enclose in the untrusted-data delimiters, replace any forged delimiter"]
     Read --> Ground
     Ground --> Loop
+
+    class Operator,CLI entry
+    class Cfg,Prompt,Loop step
+    class PModel,PTool,PSink,PRend,PRetr,PGate protocol
+    class Adapter,TraceFile,Term,Dispatcher,Calc,Search,Save,Read,Web,Chroma,Keyword success
+    class Ground,Gate,Notes safety
+    class Select decision
+    class Endpoint,Corpus external
+
+    style Seam fill:#f3eef7,stroke:#9673a6,stroke-width:2px,color:#000
+
+    classDef entry fill:#dae8fc,stroke:#6c8ebf,stroke-width:1px,color:#000
+    classDef decision fill:#fff2cc,stroke:#d6b656,stroke-width:1px,color:#000
+    classDef success fill:#d5e8d4,stroke:#82b366,stroke-width:1px,color:#000
+    classDef protocol fill:#e1d5e7,stroke:#9673a6,stroke-width:1px,color:#000
+    classDef safety fill:#ffe6cc,stroke:#d79b00,stroke-width:1px,color:#000
+    classDef external fill:#f5f5f5,stroke:#666666,stroke-width:1px,color:#000,stroke-dasharray: 4 3
+    classDef step fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000
 ```
 
 Two edges in that diagram carry most of the safety model. `save_note` reaches
@@ -603,6 +633,12 @@ count.
 Every run ends with exactly one of five outcomes: a final answer, the step limit,
 the cost cap, a model error, or an invalid task.
 
+![A run stopped by the step limit: one step completed, then the stop reason and exit code 2](docs/screenshots/step-limit.svg)
+
+That run was executed with `MAX_STEPS=1` to force the bound after a single step,
+and the exit code is 2 rather than 0, so a caller can detect the outcome without
+parsing the text above.
+
 ## Exit codes
 
 A caller can tell every termination path apart without parsing terminal text.
@@ -632,6 +668,11 @@ model is the component that cannot be relied on.
    argument is rejected by the dispatcher before the tool runs at all. A decline
    leaves the notes file byte-identical, and the file is untouched while the
    prompt waits.
+
+   ![The confirmation gate: the complete note text, the destination, and the prompt that only the operator can answer](docs/screenshots/confirmation.svg)
+
+   The image is rendered from the captured output of a real run in which the
+   operator typed `y`; an empty line, or any other reply, would have declined.
 2. **Untrusted data is delimited and sanitised.** Text from `search_docs` and
    `read_notes` enters the conversation enclosed in untrusted-data delimiters,
    with any forged delimiter inside it replaced by a visible removal notice. A
@@ -769,6 +810,11 @@ came from, recorded in the file's own `_sources` field:
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
 ```
+
+![The offline test suite: 969 tests passing in 339.69 seconds](docs/screenshots/tests.svg)
+
+The dot rows in that image are abridged to keep its height down, and the run it
+was rendered from needed no API key and no network.
 
 969 tests across 27 files, including 25 property-based tests in
 `tests/test_properties.py` (Hypothesis, 100 examples each, `derandomize=True`
